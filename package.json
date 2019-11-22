@@ -1,5 +1,5 @@
 {
-  "name": "action-npm-publish",
+  "name": "@feizheng/action-npm-publish",
   "version": "1.0.0",
   "description": "Github action for npm publsih.",
   "homepage": "https://github.com/afeiship",
@@ -8,6 +8,7 @@
     "email": "1290657123@qq.com"
   },
   "scripts": {
+    "gulp": "gulp",
     "build": "ncc build index.js"
   },
   "main": "index.js",
@@ -16,5 +17,8 @@
     "@actions/core": "^1.2.0",
     "@actions/exec": "^1.0.1",
     "@actions/github": "^1.1.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }

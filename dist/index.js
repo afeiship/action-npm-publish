@@ -192,9 +192,7 @@ const exec = __webpack_require__(230);
 
 async function main() {
   const dir = process.env.GITHUB_WORKSPACE || './src';
-  await exec.exec('ls', ['-alh', `${dir}/action-npm-publish`]);
-
-  console.log(`hello ${dir}`);
+  await exec.exec('ls', ['-alh', dir]);
 }
 
 if (require.main === require.cache[eval('__filename')]) {
