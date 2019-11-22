@@ -21,4 +21,4 @@ jobs:
           commit_pattern: "^Release (\\S+)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_AUTH_TOKEN: 825044f3-f7bd-40ff-b868-c3fda9486819 # You need to set this in your repo settings
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
