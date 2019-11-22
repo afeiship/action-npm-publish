@@ -16,6 +16,8 @@ async function main() {
     tagAuthor: { name: 'afeiship', email: '1290657123@qq.com' }
   };
 
+  await exec.exec('printenv');
+
   fs.writeFileSync(
     `/home/runner/.npmrc`,
     `//registry.npmjs.org/:_authToken=${process.env.NPM_AUTH_TOKEN}`
