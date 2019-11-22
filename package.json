@@ -9,7 +9,7 @@
   },
   "scripts": {
     "gulp": "gulp",
-    "build": "ncc build index.js"
+    "build": "ncc build src/index.js"
   },
   "main": "index.js",
   "license": "MIT",

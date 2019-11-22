@@ -8,5 +8,7 @@ jobs:
       - name: Hello world action step
         id: hello
         uses: afeiship/action-npm-publish@master
-        with:
-          commit_pattern: 'Hello fei'
+        with: # All of theses inputs are optional
+          tag_name: "v%s"
+          tag_message: "v%s"
+          commit_pattern: "^Release (\\S+)"
