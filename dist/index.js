@@ -3049,10 +3049,6 @@ async function main() {
     tagAuthor: { name: 'afeiship', email: '1290657123@qq.com' }
   };
 
-  await exec.exec('echo', [
-    `//registry.npmjs.org/:_authToken=${process.env.NPM_AUTH_TOKEN}>>${dir}/.npmrc`
-  ]);
-  console.log(`=========${dir}/.npmrc start=========`);
   await exec.exec('npm', gs['publish', '--access=public']);
   console.log('=========.npmrc end=========');
   // await createTag(dir, config);
