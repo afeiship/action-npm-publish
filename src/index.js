@@ -23,7 +23,7 @@ async function main() {
   await exec.exec('npm', ['publish', '--access=public']);
   console.log('=========.npmrc end=========');
   // await createTag(dir, config);
-  await publishPackage(dir);
+  // await publishPackage(dir);
 }
 
 if (require.main === module) {
