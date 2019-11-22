@@ -12,8 +12,9 @@ const exec = require('@actions/exec');
 
 async function main() {
   const dir = process.env.GITHUB_WORKSPACE || './src';
+  await exec.exec('ls', ['-alh', dir]);
+
   console.log(`hello ${dir}`);
-  exec('ls', ['-alh', dir]);
 }
 
 if (require.main === module) {
