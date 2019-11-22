@@ -9,6 +9,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: true
 
       - name: Publish to npm
         uses: afeiship/action-npm-publish@master
