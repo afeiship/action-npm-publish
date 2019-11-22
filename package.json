@@ -1,0 +1,16 @@
+{
+  "name": "action-npm-publish",
+  "version": "1.0.0",
+  "description": "Github action for npm publsih.",
+  "homepage": "https://github.com/afeiship",
+  "author": {
+    "name": "afeiship",
+    "email": "1290657123@qq.com"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^1.1.0"
+  }
+}
