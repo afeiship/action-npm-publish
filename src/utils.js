@@ -17,6 +17,7 @@ async function readJson(file) {
 }
 
 async function createTag(dir, config) {
+  const packageFile = join(dir, 'package.json');
   const { version } = await readJson(packageFile);
   const tagName = config.tagName.replace(/%s/g, version);
   const tagMessage = config.tagMessage.replace(/%s/g, version);
@@ -47,6 +48,7 @@ async function createTag(dir, config) {
 }
 
 async function publishPackage(dir) {
+  const packageFile = join(dir, 'package.json');
   const packageObj = await readJson(packageFile);
   await run(dir, 'npm', 'publish', '--access=public');
 
