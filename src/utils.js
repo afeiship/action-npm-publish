@@ -53,6 +53,7 @@ async function publishPackage(dir) {
   const packageFile = join(dir, 'package.json');
   const packageObj = await readJson(packageFile);
   await run(dir, 'echo', `//registry.npmjs.org/:_authToken=${getEnv('NPM_AUTH_TOKEN')}>>.npmrc`);
+  await run(dir, 'cat', '.npmrc');
   await run(dir, 'npm', 'publish', '--access=public');
   console.log('Version has been published successfully:', packageObj.version);
 }
