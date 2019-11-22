@@ -19,7 +19,6 @@ async function main() {
     `//registry.npmjs.org/:_authToken=${process.env.NPM_AUTH_TOKEN}>>${dir}/.npmrc`
   ]);
   console.log(`=========${dir}/.npmrc start=========`);
-  await exec.exec('cat', [`${dir}/.npmrc`]);
   await exec.exec('npm', gs['publish', '--access=public']);
   console.log('=========.npmrc end=========');
   // await createTag(dir, config);
