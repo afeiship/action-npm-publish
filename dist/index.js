@@ -3039,13 +3039,7 @@ const process = __webpack_require__(765);
 
 const dir = process.env.GITHUB_WORKSPACE || '/github/workspace';
 const commitPattern = '^(?:Release|Version) (\\S+)';
-
-const {
-  createTag,
-  readJson,
-  publishPackage,
-  NeutralExitError
-} = __webpack_require__(893);
+const { createTag, publishPackage, NeutralExitError } = __webpack_require__(893);
 
 async function main() {
   const config = {
@@ -3058,9 +3052,8 @@ async function main() {
   exec.exec('pwd');
   exec.exec('ls', [dir, '-alh']);
   exec.exec('cat', ['.git/config']);
-  exec.exec('echo', ['$GITHUB_TOKEN']);
-  exec.exec('echo', ['$NPM_AUTH_TOKEN']);
   exec.exec('printenv');
+
   await createTag(dir, config);
   await publishPackage(dir);
 }
@@ -11389,7 +11382,6 @@ module.exports = function (str) {
 /***/ 893:
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
-const process = __webpack_require__(765);
 const { join } = __webpack_require__(622);
 const { spawn } = __webpack_require__(129);
 const { readFile } = __webpack_require__(747);
@@ -11433,7 +11425,6 @@ async function createTag(dir, config) {
 
   await run(dir, 'git', 'config', 'user.name', name);
   await run(dir, 'git', 'config', 'user.email', email);
-
   await run(dir, 'git', 'tag', '-a', '-m', tagMessage, tagName);
   await run(dir, 'git', 'push', 'origin', `refs/tags/${tagName}`);
 
@@ -11444,7 +11435,6 @@ async function publishPackage(dir) {
   const packageFile = join(dir, 'package.json');
   const packageObj = await readJson(packageFile);
   await run(dir, 'npm', 'publish', '--access=public');
-
   console.log('Version has been published successfully:', packageObj.version);
 }
 

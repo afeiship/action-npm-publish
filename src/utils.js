@@ -1,4 +1,3 @@
-const process = require('process');
 const { join } = require('path');
 const { spawn } = require('child_process');
 const { readFile } = require('fs');
