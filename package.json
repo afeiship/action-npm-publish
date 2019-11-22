@@ -7,10 +7,14 @@
     "name": "afeiship",
     "email": "1290657123@qq.com"
   },
+  "scripts": {
+    "build": "ncc build index.js"
+  },
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.0",
+    "@actions/exec": "^1.0.1",
     "@actions/github": "^1.1.0"
   }
 }
