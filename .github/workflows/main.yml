@@ -1,23 +1,15 @@
-on:
-  push:
-    branches:
-      - master
+name: Publish
+on: push
+
 jobs:
-  __tests__:
-    name: Test for npm-publish
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@master
-      - name: Setup Git
-        uses: fregante/setup-git-token@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish to npm
-        uses: ./
-        with: # All of theses inputs are optional
-          tag_name: 'v%s'
-          tag_message: 'v%s'
-          commit_pattern: "^Release (\\S+)"
+      - uses: actions/checkout@v1
+      - name: Create .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: Publish
+        run: npm publish --access=public

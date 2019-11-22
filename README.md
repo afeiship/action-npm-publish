@@ -5,8 +5,8 @@
 ```yml
 on:
   push:
-      branches:
-        - master
+    branches:
+      - master
 jobs:
   __tests__:
     name: Test for npm-publish
@@ -19,13 +19,12 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish to npm
-        uses: afeiship/action-npm-publish@master
+        uses: ./
         with: # All of theses inputs are optional
-          tag_name: "v%s"
-          tag_message: "v%s"
+          tag_name: 'v%s'
+          tag_message: 'v%s'
           commit_pattern: "^Release (\\S+)"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
 ```
 
