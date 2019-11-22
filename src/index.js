@@ -6,7 +6,12 @@ const dir = process.env.GITHUB_WORKSPACE || '/github/workspace';
 const eventFile = '/github/workflow/event.json';
 const commitPattern = '^(?:Release|Version) (\\S+)';
 
-const { createTag, publishPackage, NeutralExitError } = require('./utils');
+const {
+  createTag,
+  readJson,
+  publishPackage,
+  NeutralExitError
+} = require('./utils');
 
 async function main() {
   const eventObj = await readJson(eventFile);

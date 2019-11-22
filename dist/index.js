@@ -3040,7 +3040,12 @@ const dir = process.env.GITHUB_WORKSPACE || '/github/workspace';
 const eventFile = '/github/workflow/event.json';
 const commitPattern = '^(?:Release|Version) (\\S+)';
 
-const { createTag, publishPackage, NeutralExitError } = __webpack_require__(893);
+const {
+  createTag,
+  readJson,
+  publishPackage,
+  NeutralExitError
+} = __webpack_require__(893);
 
 async function main() {
   const eventObj = await readJson(eventFile);
