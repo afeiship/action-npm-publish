@@ -5,13 +5,7 @@ const process = require('process');
 
 const dir = process.env.GITHUB_WORKSPACE || '/github/workspace';
 const commitPattern = '^(?:Release|Version) (\\S+)';
-
-const {
-  createTag,
-  readJson,
-  publishPackage,
-  NeutralExitError
-} = require('./utils');
+const { createTag, publishPackage, NeutralExitError } = require('./utils');
 
 async function main() {
   const config = {
@@ -24,9 +18,8 @@ async function main() {
   exec.exec('pwd');
   exec.exec('ls', [dir, '-alh']);
   exec.exec('cat', ['.git/config']);
-  exec.exec('echo', ['$GITHUB_TOKEN']);
-  exec.exec('echo', ['$NPM_AUTH_TOKEN']);
   exec.exec('printenv');
+
   await createTag(dir, config);
   await publishPackage(dir);
 }

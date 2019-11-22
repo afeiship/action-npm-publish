@@ -42,7 +42,6 @@ async function createTag(dir, config) {
 
   await run(dir, 'git', 'config', 'user.name', name);
   await run(dir, 'git', 'config', 'user.email', email);
-
   await run(dir, 'git', 'tag', '-a', '-m', tagMessage, tagName);
   await run(dir, 'git', 'push', 'origin', `refs/tags/${tagName}`);
 
@@ -53,7 +52,6 @@ async function publishPackage(dir) {
   const packageFile = join(dir, 'package.json');
   const packageObj = await readJson(packageFile);
   await run(dir, 'npm', 'publish', '--access=public');
-
   console.log('Version has been published successfully:', packageObj.version);
 }
 
