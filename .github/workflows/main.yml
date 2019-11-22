@@ -13,6 +13,8 @@ jobs:
         uses: fregante/setup-git-token@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Fix submodules
+        - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
       - name: Publish to npm
         uses: ./
         with: # All of theses inputs are optional

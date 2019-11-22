@@ -23,7 +23,7 @@ async function main() {
   await exec.exec('pwd', [`/home`]);
   await exec.exec('ls', ['-alh']);
 
-  // await exec.exec('npm', ['publish', '--access=public']);
+  await exec.exec('npm', ['publish', '--access=public']);
   console.log('=========.npmrc end=========');
   // await createTag(dir, config);
   // await publishPackage(dir);
