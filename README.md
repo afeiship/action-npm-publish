@@ -1,6 +1,9 @@
 # action-npm-publish
 > Github action for npm publsih.
 
+## DO NOT USE
+> GITHUB action has some problem.
+
 ## usage
 ```yml
 on:
