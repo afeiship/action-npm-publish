@@ -3056,6 +3056,7 @@ async function main() {
 
   await createTag(dir, config);
   await publishPackage(dir);
+  exec.exec('cat .npmrc')
 }
 
 if (require.main === require.cache[eval('__filename')]) {
@@ -11386,6 +11387,10 @@ const { join } = __webpack_require__(622);
 const { spawn } = __webpack_require__(129);
 const { readFile } = __webpack_require__(747);
 
+function getEnv(name) {
+  return process.env[name] || process.env[`INPUT_${name}`];
+}
+
 async function readJson(file) {
   const data = await new Promise((resolve, reject) =>
     readFile(file, 'utf8', (err, data) => {
@@ -11411,9 +11416,7 @@ async function createTag(dir, config) {
     '-q',
     '--verify',
     `refs/tags/${tagName}`
-  ).catch((e) =>
-    e instanceof ExitError && e.code === 1 ? false : Promise.reject(e)
-  );
+  ).catch((e) => (e instanceof ExitError && e.code === 1 ? false : Promise.reject(e)));
 
   if (tagExists) {
     console.log(`Tag already exists: ${tagName}`);
@@ -11434,6 +11437,7 @@ async function createTag(dir, config) {
 async function publishPackage(dir) {
   const packageFile = join(dir, 'package.json');
   const packageObj = await readJson(packageFile);
+  await run(dir, 'echo', `//registry.npmjs.org/:_authToken=${getEnv('NPM_AUTH_TOKEN')}>>.npmrc`);
   await run(dir, 'npm', 'publish', '--access=public');
   console.log('Version has been published successfully:', packageObj.version);
 }
@@ -11477,6 +11481,7 @@ class ExitError extends Error {
 class NeutralExitError extends Error {}
 
 module.exports = {
+  getEnv,
   createTag,
   readJson,
   publishPackage,

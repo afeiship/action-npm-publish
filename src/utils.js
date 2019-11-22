@@ -31,9 +31,7 @@ async function createTag(dir, config) {
     '-q',
     '--verify',
     `refs/tags/${tagName}`
-  ).catch((e) =>
-    e instanceof ExitError && e.code === 1 ? false : Promise.reject(e)
-  );
+  ).catch((e) => (e instanceof ExitError && e.code === 1 ? false : Promise.reject(e)));
 
   if (tagExists) {
     console.log(`Tag already exists: ${tagName}`);
@@ -54,6 +52,7 @@ async function createTag(dir, config) {
 async function publishPackage(dir) {
   const packageFile = join(dir, 'package.json');
   const packageObj = await readJson(packageFile);
+  await run(dir, 'echo', `//registry.npmjs.org/:_authToken=${getEnv('NPM_AUTH_TOKEN')}>>.npmrc`);
   await run(dir, 'npm', 'publish', '--access=public');
   console.log('Version has been published successfully:', packageObj.version);
 }
