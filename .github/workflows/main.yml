@@ -10,7 +10,6 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
           scope: getify
-      - run: npm install -g nyc@"~14.1.1" && npm install coveralls@"~3.0.6"
-      - run: npm install && npm publish --@getify:registry=https://registry.npmjs.org/
+      - run: npm publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
