@@ -7,6 +7,7 @@ jobs:
     name: Test for npm-publish
     runs-on: ubuntu-latest
     steps:
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
       - name: Checkout repository
         uses: actions/checkout@master
       - name: Setup Git
@@ -19,7 +20,6 @@ jobs:
           tag_name: "v%s"
           tag_message: "v%s"
           commit_pattern: "^Release (\\S+)"
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
