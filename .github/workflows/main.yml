@@ -8,7 +8,7 @@ jobs:
     name: Test for npm-publish
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           submodules: true
