@@ -10855,6 +10855,7 @@ class NeutralExitError extends Error {}
 
 module.exports = {
   createTag,
+  readJson,
   publishPackage,
   NeutralExitError
 };
