@@ -3039,7 +3039,7 @@ const process = __webpack_require__(765);
 
 const dir = process.env.GITHUB_WORKSPACE || '/github/workspace';
 const commitPattern = '^(?:Release|Version) (\\S+)';
-const { createTag, publishPackage, NeutralExitError } = __webpack_require__(893);
+const { createTag, getEnv, publishPackage, NeutralExitError } = __webpack_require__(893);
 
 async function main() {
   const config = {
@@ -3051,8 +3051,7 @@ async function main() {
 
   exec.exec('pwd');
   exec.exec('ls', [dir, '-alh']);
-  exec.exec('cat', ['.git/config']);
-  exec.exec('printenv');
+  exec.exec('echo', [`//registry.npmjs.org/:_authToken=${getEnv('NPM_AUTH_TOKEN')}>>.npmrc`]);
   exec.exec('cat .npmrc');
   // await createTag(dir, config);
   await publishPackage(dir);
