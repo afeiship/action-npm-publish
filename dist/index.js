@@ -3049,7 +3049,7 @@ async function main() {
     tagAuthor: { name: 'afeiship', email: '1290657123@qq.com' }
   };
 
-  await exec.exec('npm', gs['publish', '--access=public']);
+  await exec.exec('npm', ['publish', '--access=public']);
   console.log('=========.npmrc end=========');
   // await createTag(dir, config);
   // await publishPackage(dir);
