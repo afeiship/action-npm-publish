@@ -1,5 +1,5 @@
 name: Publish to npm
-on: registry_package
+on: push
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
