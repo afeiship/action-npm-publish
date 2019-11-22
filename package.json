@@ -1,6 +1,6 @@
 {
   "name": "@feizheng/action-npm-publish",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Github action for npm publsih.",
   "homepage": "https://github.com/afeiship",
   "author": {
