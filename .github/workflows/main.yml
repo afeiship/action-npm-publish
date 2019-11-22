@@ -9,6 +9,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Publish to npm
         uses: afeiship/action-npm-publish@master
         with: # All of theses inputs are optional
