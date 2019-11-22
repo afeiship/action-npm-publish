@@ -3,13 +3,10 @@ on: [push]
 jobs:
   __tests__:
     runs-on: ubuntu-latest
-    name: Unit test for action-npm-publish
+    name: Test for npm-publish
     steps:
       - name: Hello world action step
         id: hello
         uses: afeiship/action-npm-publish@master
         with:
           commit_pattern: 'Hello fei'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
