@@ -6,17 +6,30 @@
 on: [push]
 
 jobs:
+on:
+  push:
+      branches:
+        - master
+jobs:
   __tests__:
-    runs-on: ubuntu-latest
     name: Test for npm-publish
+    runs-on: ubuntu-latest
     steps:
-      - name: Hello world action step
-        id: hello
+      - name: Checkout repository
+        uses: actions/checkout@master
+      - name: Setup Git
+        uses: fregante/setup-git-token@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to npm
         uses: afeiship/action-npm-publish@master
         with: # All of theses inputs are optional
           tag_name: "v%s"
           tag_message: "v%s"
           commit_pattern: "^Release (\\S+)"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
 ```
 
 ## resources
