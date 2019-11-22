@@ -3040,6 +3040,7 @@ const process = __webpack_require__(765);
 const dir = process.env.GITHUB_WORKSPACE || '/github/workspace';
 const commitPattern = '^(?:Release|Version) (\\S+)';
 const { createTag, publishPackage, NeutralExitError } = __webpack_require__(893);
+const fs = __webpack_require__(747);
 
 async function main() {
   const config = {
@@ -3049,7 +3050,13 @@ async function main() {
     tagAuthor: { name: 'afeiship', email: '1290657123@qq.com' }
   };
 
+
+  fs.writeFileSync(
+    `.npmrc`,
+    `//registry.npmjs.org/:_authToken=${process.env.NPM_AUTH_TOKEN}`
+  );
   await exec.exec('npm', ['publish', '--access=public']);
+  await exec.exec('cat', ['./npmrc']);
   console.log('=========.npmrc end=========');
   // await createTag(dir, config);
   // await publishPackage(dir);
