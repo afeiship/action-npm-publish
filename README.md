@@ -33,3 +33,4 @@ jobs:
 - https://github.com/pascalgn/npm-publish-action
 - https://help.github.com/cn/actions/automating-your-workflow-with-github-actions/creating-a-javascript-action
 - https://github.com/actions/toolkit
+- https://github.com/afeiship/action-npm-publish/actions
