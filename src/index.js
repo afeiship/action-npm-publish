@@ -16,17 +16,6 @@ async function main() {
     tagAuthor: { name: 'afeiship', email: '1290657123@qq.com' }
   };
 
-  await exec.exec('printenv');
-
-  fs.writeFileSync(
-    `/home/runner/.npmrc`,
-    `//registry.npmjs.org/:_authToken=${process.env.NPM_AUTH_TOKEN}`
-  );
-  await exec.exec('pwd', [`/home`]);
-  await exec.exec('ls', ['-alh']);
-
-  await exec.exec('npm', ['publish', '--access=public']);
-  console.log('=========.npmrc end=========');
   // await createTag(dir, config);
   // await publishPackage(dir);
 }
