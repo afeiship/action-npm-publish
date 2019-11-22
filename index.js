@@ -11,7 +11,8 @@ const exec = require('@actions/exec');
 // console.log(`The event payload: ${payload}`);
 
 async function main() {
-  console.log('hello basic action!');
+  const dir = process.env.GITHUB_WORKSPACE || './src';
+  console.log(`hello ${dir}`);
 }
 
 if (require.main === module) {
