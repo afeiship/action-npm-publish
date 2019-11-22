@@ -16,7 +16,7 @@ jobs:
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
       - name: Publish to npm
-        - uses: primer/publish@master
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        uses: primer/publish@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
