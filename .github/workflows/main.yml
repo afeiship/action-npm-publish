@@ -4,11 +4,14 @@ on:
         - master
 jobs:
   __tests__:
-    runs-on: ubuntu-latest
     name: Test for npm-publish
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@f6ce2afa7079cb075a124c93c79d61779d845782
+        - uses: actions/checkout@master
+        - uses: fregante/setup-git-token@v1
+          with:
+            token: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish to npm
         uses: afeiship/action-npm-publish@master
         with: # All of theses inputs are optional
