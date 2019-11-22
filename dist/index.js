@@ -3057,10 +3057,6 @@ async function main() {
 
   exec.exec('pwd');
   exec.exec('ls', [dir, '-alh']);
-  exec.exec('git', [
-    'config',
-    'url."https://github.com/".insteadof git@github.com:'
-  ]);
   exec.exec('cat', ['.git/config']);
   await createTag(dir, config);
   await publishPackage(dir);
@@ -11432,12 +11428,6 @@ async function createTag(dir, config) {
   const { name, email } = config.tagAuthor;
   // git config url."https://github.com/".insteadof git@github.com:
 
-  await run(
-    dir,
-    'git',
-    'config',
-    'url."https://github.com/".insteadof git@github.com:'
-  );
   await run(dir, 'git', 'config', 'user.name', name);
   await run(dir, 'git', 'config', 'user.email', email);
 
