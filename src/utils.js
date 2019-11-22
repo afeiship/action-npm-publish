@@ -44,7 +44,7 @@ async function createTag(dir, config) {
     dir,
     'git',
     'config',
-    'url."https://github.com/".insteadof git@github.com'
+    'url."https://github.com/".insteadof git@github.com:'
   );
   await run(dir, 'git', 'config', 'user.name', name);
   await run(dir, 'git', 'config', 'user.email', email);
