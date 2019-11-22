@@ -1,5 +1,7 @@
-on: [push]
-
+on:
+  push:
+      branches:
+        - master
 jobs:
   __tests__:
     runs-on: ubuntu-latest
@@ -7,6 +9,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Hello world action step
         id: hello
         uses: afeiship/action-npm-publish@master
@@ -15,5 +19,4 @@ jobs:
           tag_message: "v%s"
           commit_pattern: "^Release (\\S+)"
         env: # More info about the environment variables in the README
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }} # You need to set this in your repo settings
