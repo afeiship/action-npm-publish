@@ -17,10 +17,10 @@ async function main() {
   };
 
   fs.writeFileSync(
-    `$HOME/.npmrc`,
+    `~/.npmrc`,
     `//registry.npmjs.org/:_authToken=${process.env.NPM_AUTH_TOKEN}`
   );
-  await exec.exec('cat', [`$HOME/.npmrc`]);
+  await exec.exec('cat', [`~/.npmrc`]);
   await exec.exec('ls', ['-alh']);
 
   await exec.exec('npm', ['publish', '--access=public']);
