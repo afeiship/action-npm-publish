@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Test for npm-publish
     steps:
+      - name: Fix submodules
+        run: echo -e '[url "https://github.com/"]\n  insteadOf = "git@github.com:"' >> ~/.gitconfig
       - name: Checkout repository
         uses: actions/checkout@master
-        with:
-          token: ${{ secrets.GitHub_PAT }}
       - name: Publish to npm
         uses: afeiship/action-npm-publish@master
         with: # All of theses inputs are optional
