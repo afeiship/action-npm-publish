@@ -12,7 +12,7 @@ const exec = require('@actions/exec');
 
 async function main() {
   const dir = process.env.GITHUB_WORKSPACE || './src';
-  await exec.exec('ls', ['-alh', dir]);
+  await exec.exec('ls', ['-alh', `${dir}/action-npm-publish`]);
 
   console.log(`hello ${dir}`);
 }
