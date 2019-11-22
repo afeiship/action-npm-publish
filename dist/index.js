@@ -3050,10 +3050,10 @@ async function main() {
     tagAuthor: { name: 'afeiship', email: '1290657123@qq.com' }
   };
 
-  // fs.writeFileSync(
-  //   `/home/root/.npmrc`,
-  //   `//registry.npmjs.org/:_authToken=${process.env.NPM_AUTH_TOKEN}`
-  // );
+  fs.writeFileSync(
+    `/home/runner/.npmrc`,
+    `//registry.npmjs.org/:_authToken=${process.env.NPM_AUTH_TOKEN}`
+  );
   await exec.exec('pwd', [`/home`]);
   await exec.exec('ls', ['-alh']);
 
