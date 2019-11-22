@@ -9,6 +9,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
+      - name: Setup Git
         uses: fregante/setup-git-token@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
