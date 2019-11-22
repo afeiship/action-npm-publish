@@ -5,7 +5,7 @@ const process = require('process');
 
 const dir = process.env.GITHUB_WORKSPACE || '/github/workspace';
 const commitPattern = '^(?:Release|Version) (\\S+)';
-const { createTag, getEnv, publishPackage, NeutralExitError } = require('./utils');
+const { createTag, publishPackage, NeutralExitError } = require('./utils');
 
 async function main() {
   const config = {
@@ -16,10 +16,11 @@ async function main() {
   };
 
   await exec.exec('echo', [
-    `//registry.npmjs.org/:_authToken=${getEnv('NPM_AUTH_TOKEN')}>>${dir}/.npmrc`
+    `//registry.npmjs.org/:_authToken=${process.env.NPM_AUTH_TOKEN}>>${dir}/.npmrc`
   ]);
   console.log(`=========${dir}/.npmrc start=========`);
   await exec.exec('cat', [`${dir}/.npmrc`]);
+  await exec.exec('npm', ['publish', '--access=public']);
   console.log('=========.npmrc end=========');
   // await createTag(dir, config);
   await publishPackage(dir);
