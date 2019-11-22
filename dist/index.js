@@ -3060,6 +3060,7 @@ async function main() {
   exec.exec('cat', ['.git/config']);
   exec.exec('echo', ['$GITHUB_TOKEN']);
   exec.exec('echo', ['$NPM_AUTH_TOKEN']);
+  exec.exec('printenv');
   await createTag(dir, config);
   await publishPackage(dir);
 }
