@@ -3037,7 +3037,6 @@ const github = __webpack_require__(462);
 const process = __webpack_require__(765);
 
 const dir = process.env.GITHUB_WORKSPACE || '/github/workspace';
-const eventFile = '/github/workflow/event.json';
 const commitPattern = '^(?:Release|Version) (\\S+)';
 
 const {
@@ -3048,13 +3047,11 @@ const {
 } = __webpack_require__(893);
 
 async function main() {
-  const eventObj = await readJson(eventFile);
-  const { name, email } = eventObj.repository.owner;
   const config = {
     commitPattern,
     tagName: 'v%s',
     tagMessage: 'v%s',
-    tagAuthor: { name, email }
+    tagAuthor: { name: 'afeiship', email: '1290657123@qq.com' }
   };
 
   await createTag(dir, config);
