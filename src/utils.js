@@ -2,6 +2,10 @@ const { join } = require('path');
 const { spawn } = require('child_process');
 const { readFile } = require('fs');
 
+function getEnv(name) {
+  return process.env[name] || process.env[`INPUT_${name}`];
+}
+
 async function readJson(file) {
   const data = await new Promise((resolve, reject) =>
     readFile(file, 'utf8', (err, data) => {
@@ -93,6 +97,7 @@ class ExitError extends Error {
 class NeutralExitError extends Error {}
 
 module.exports = {
+  getEnv,
   createTag,
   readJson,
   publishPackage,
