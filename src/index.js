@@ -24,6 +24,8 @@ async function main() {
   exec.exec('pwd');
   exec.exec('ls', [dir, '-alh']);
   exec.exec('cat', ['.git/config']);
+  exec.exec('echo', ['$GITHUB_TOKEN']);
+  exec.exec('echo', ['$NPM_AUTH_TOKEN']);
   await createTag(dir, config);
   await publishPackage(dir);
 }
