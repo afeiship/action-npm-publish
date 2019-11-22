@@ -8,9 +8,7 @@ jobs:
     name: Test for npm-publish
     steps:
       - name: Checkout repository
-        uses: actions/checkout@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/checkout@v1
 
       - name: Publish to npm
         uses: afeiship/action-npm-publish@master
