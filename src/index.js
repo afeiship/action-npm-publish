@@ -17,8 +17,8 @@ async function main() {
 
   exec.exec('pwd');
   exec.exec('ls', [dir, '-alh']);
-  exec.exec('echo', [`//registry.npmjs.org/:_authToken=${getEnv('NPM_AUTH_TOKEN')}>>.npmrc`]);
-  exec.exec('cat .npmrc');
+  await exec.exec('echo', [`//registry.npmjs.org/:_authToken=${getEnv('NPM_AUTH_TOKEN')}>>.npmrc`]);
+  await exec.exec('cat .npmrc');
   // await createTag(dir, config);
   await publishPackage(dir);
 }
