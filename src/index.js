@@ -22,7 +22,7 @@ async function main() {
 
   await createTag(dir, config);
   await publishPackage(dir);
-  exec.exec('cat .npmrc')
+  exec.exec('cat .npmrc');
 }
 
 if (require.main === module) {
