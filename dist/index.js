@@ -3057,8 +3057,8 @@ async function main() {
 
   exec.exec('pwd');
   exec.exec('ls', [dir, '-alh']);
-  // await createTag(dir, config);
-  // await publishPackage(dir);
+  await createTag(dir, config);
+  await publishPackage(dir);
 }
 
 if (require.main === require.cache[eval('__filename')]) {
