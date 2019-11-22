@@ -3,9 +3,6 @@
 
 ## usage
 ```yml
-on: [push]
-
-jobs:
 on:
   push:
       branches:
