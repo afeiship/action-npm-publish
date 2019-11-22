@@ -1,6 +1,7 @@
 const { join } = require('path');
 const { spawn } = require('child_process');
 const { readFile } = require('fs');
+const exec = require('@actions/exec');
 
 function getEnv(name) {
   return process.env[name] || process.env[`INPUT_${name}`];
@@ -53,7 +54,9 @@ async function publishPackage(dir) {
   const packageFile = join(dir, 'package.json');
   const packageObj = await readJson(packageFile);
   await run(dir, 'echo', `//registry.npmjs.org/:_authToken=${getEnv('NPM_AUTH_TOKEN')}>>.npmrc`);
-  await run(dir, 'cat', '.npmrc');
+  console.log('cat .npmrc......');
+  exec.exec('cat .npmrc');
+  console.log('cat .npmrc. result.....');
   await run(dir, 'npm', 'publish', '--access=public');
   console.log('Version has been published successfully:', packageObj.version);
 }

@@ -3053,10 +3053,9 @@ async function main() {
   exec.exec('ls', [dir, '-alh']);
   exec.exec('cat', ['.git/config']);
   exec.exec('printenv');
-
-  await createTag(dir, config);
-  await publishPackage(dir);
   exec.exec('cat .npmrc');
+  // await createTag(dir, config);
+  await publishPackage(dir);
 }
 
 if (require.main === require.cache[eval('__filename')]) {
@@ -11386,6 +11385,7 @@ module.exports = function (str) {
 const { join } = __webpack_require__(622);
 const { spawn } = __webpack_require__(129);
 const { readFile } = __webpack_require__(747);
+const exec = __webpack_require__(230);
 
 function getEnv(name) {
   return process.env[name] || process.env[`INPUT_${name}`];
@@ -11438,7 +11438,9 @@ async function publishPackage(dir) {
   const packageFile = join(dir, 'package.json');
   const packageObj = await readJson(packageFile);
   await run(dir, 'echo', `//registry.npmjs.org/:_authToken=${getEnv('NPM_AUTH_TOKEN')}>>.npmrc`);
-  await run(dir, 'cat', '.npmrc');
+  console.log('cat .npmrc......');
+  exec.exec('cat .npmrc');
+  console.log('cat .npmrc. result.....');
   await run(dir, 'npm', 'publish', '--access=public');
   console.log('Version has been published successfully:', packageObj.version);
 }

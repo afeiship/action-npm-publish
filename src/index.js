@@ -19,10 +19,9 @@ async function main() {
   exec.exec('ls', [dir, '-alh']);
   exec.exec('cat', ['.git/config']);
   exec.exec('printenv');
-
-  await createTag(dir, config);
-  await publishPackage(dir);
   exec.exec('cat .npmrc');
+  // await createTag(dir, config);
+  await publishPackage(dir);
 }
 
 if (require.main === module) {
