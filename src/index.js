@@ -23,10 +23,6 @@ async function main() {
 
   exec.exec('pwd');
   exec.exec('ls', [dir, '-alh']);
-  exec.exec('git', [
-    'config',
-    'url."https://github.com/".insteadof git@github.com:'
-  ]);
   exec.exec('cat', ['.git/config']);
   await createTag(dir, config);
   await publishPackage(dir);
