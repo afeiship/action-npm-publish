@@ -13,6 +13,7 @@ const exec = require('@actions/exec');
 async function main() {
   const dir = process.env.GITHUB_WORKSPACE || './src';
   console.log(`hello ${dir}`);
+  exec('ls', ['-alh', dir]);
 }
 
 if (require.main === module) {
