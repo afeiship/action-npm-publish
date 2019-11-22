@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const exec = require('@actions/exec');
 const process = require('process');
 
 const dir = process.env.GITHUB_WORKSPACE || '/github/workspace';
@@ -20,8 +21,10 @@ async function main() {
     tagAuthor: { name: 'afeiship', email: '1290657123@qq.com' }
   };
 
-  await createTag(dir, config);
-  await publishPackage(dir);
+  exec.exec('pwd');
+  exec.exec('ls', [dir, '-alh']);
+  // await createTag(dir, config);
+  // await publishPackage(dir);
 }
 
 if (require.main === module) {
